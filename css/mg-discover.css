@@ -1,10 +1,13 @@
-#map-canvas { height: 552px; width: 800px; float:left;}
+#map-canvas { height:100%; min-height: 552px; width: 100%;}
 
 .mg-discover-pane {
+  position: absolute;
+  top:40;
+  right:0;
   background-color: white;
   border: 1px solid #eee;
   width: 398px;
-  float:right;
+  
   z-index: 99;
   height:550px;
 }

@@ -43,8 +43,6 @@ md-tabs.md-default-theme md-ink-bar {
 }
 
 #content {
-  margin-top: 70px;
-
   position: relative;
   min-height: 100%;
   height: auto !important;
