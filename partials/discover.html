@@ -2,23 +2,19 @@
 <div class="mg-discover-pane">
   <div class="mg-discover-pane-header">
     <div class="mg-discover-pane-header-actions">
-      <div ng-click="renderPhotos()" class="mg-discover-pane-header-action">
-        <img src="img/instagram.png" alt="InstagramPhotos">
-        <p> Instagram
-        </p>
-      </div>
-      <div ng-click="renderFlickrPhotos()" class="mg-discover-pane-header-action">
-        <img src="img/flickr.png" alt="Flickr Photos">
-        <p>
-          Flickr
-        </p>
-      </div>
-      <div ng-click="renderPlaces()" class="mg-discover-pane-header-action">
-        <img src="img/google_plus.png" alt="Places">
-        <p>
-          Google
-        </p>
-      </div>
+      <md-button class="md-icon-button" aria-label="More" ng-click="showFlights()">
+        <md-icon md-svg-icon="img/svg/ic_photo_camera_black_24px.svg"></md-icon>
+        <md-tooltip>Flights</md-tooltip>
+      </md-button>
+      <md-button class="md-icon-button" aria-label="More" ng-click="showPhotos()">
+        <md-icon md-svg-icon="img/svg/ic_photo_camera_black_24px.svg"></md-icon>
+        <md-tooltip>Photos</md-tooltip>
+      </md-button>
+      <md-button class="md-icon-button" aria-label="More" ng-click="showPlaces()">
+        <md-icon md-svg-icon="img/svg/ic_photo_camera_black_24px.svg"></md-icon>
+        <md-tooltip>Places</md-tooltip>
+      </md-button>
+      
     </div>
   </div>
   <div id="mg-content">

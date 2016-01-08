@@ -2,7 +2,7 @@
 
 .mg-discover-pane {
   position: absolute;
-  top:40;
+  top:0;
   right:0;
   background-color: white;
   border: 1px solid #eee;

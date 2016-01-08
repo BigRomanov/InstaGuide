@@ -19,7 +19,7 @@ MyGuideApp.controller('DiscoverController', ['$scope', '$timeout' ,'$window', '$
   $scope.showResults     = false;
   $scope.showPredictions = false;
 
-  $scope.activeTab = 'google';
+  $scope.activeTab = 'photos';
 
 
   // Method to extract the instgram access token from url
@@ -155,24 +155,24 @@ MyGuideApp.controller('DiscoverController', ['$scope', '$timeout' ,'$window', '$
       console.log("Google places", $scope.googlePlaces);
     });
 
-    $scope.renderPlaces();
+    $scope.showPhotos();
   }
 
-  $scope.renderPhotos = function() {
+  $scope.showPhotos = function() {
     console.log("renderPhotos");
-    $scope.activeTab = 'instagram';
+    $scope.activeTab = 'photos';
     $scope.title = "Instagram photos";
     return false;
   }
 
-  $scope.renderFlickrPhotos = function() {
+  $scope.showFlickrPhotos = function() {
     console.log("renderFlickrPhotos");
     $scope.activeTab = 'flickr';
     $scope.title = "Flickr photos";
     return false;
   }
 
-  $scope.renderPhotosFromLocation = function(location) {
+  $scope.showPhotosFromLocation = function(location) {
     console.log(location);
     InstagramService.getImagesByLocationId(location.id, function(photos) {
       $scope.instagramPhotos = photos;
@@ -181,10 +181,9 @@ MyGuideApp.controller('DiscoverController', ['$scope', '$timeout' ,'$window', '$
     });
   }
 
-  $scope.renderPlaces = function() {
-    console.log("renderPlaces");
+  $scope.showPlaces = function() {
     $scope.activeTab = 'google';
-    $scope.title = "Google places";
+    $scope.title = "Places";
     return false;
   }
 
