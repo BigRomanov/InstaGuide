@@ -1,0 +1,59 @@
+<div style="padding:10px">
+  <div id="mg-admin-search">
+    <label for="mg-admin-search-name">Name:</label>
+    <input type="text" id="mg-admin-search-name" ng-model="name" ng-enter="searchPlace()" placeholder="Enter place" autofocus>
+    <button ng-click="searchPlace()" class="mg-admin-search-button">Search</button>
+  </div>
+
+  <div ng-show="status">{{status}}</div>
+  <img ng-show="googleLoading" style="display:block;margin:auto;margin-top:20px;width:60px;height:60px" src="img/loader.gif" alt="">
+
+  <div class="mg-admin-section" ng-show="googlePlaces || googlePlace">
+    <folder  title="googleDetailsTitle" open="true">
+      <!-- Show disambiguation list from google geocoder -->
+      <div  ng-show="googlePlaces !== null" id="mg-admin-placelist">
+        <div  ng-repeat="place in googlePlaces" 
+              ng-mouseenter="place.selected=true" 
+              ng-mouseleave="place.selected=false" 
+              ng-click="resolveGooglePlace(place)">
+          <div class="mg-admin-prediction" ng-class="{ active: place.selected == true}">
+            <p ng-bind="place.description"></p>  
+          </div>
+        </div>
+      </div>
+      <div style="clear:both"></div>
+      <div ng-show="googlePlace" class="mg-admin-place">
+        <div class="mg-admin-place-details">
+          <!-- Place card preview -->
+          <place place="googlePlace"></place>
+        </div>
+        <div class="mg-admin-place-actions">
+          <div ng-click="addtoMyGuide(googlePlace)" class="call-for-action-button" style="width:120px;height:20px;font-size:14px;margin:auto">
+            Add to My Guide
+          </div>
+        </div>
+        
+        <div class="mg-admin-place-map">
+          <google-map place="googlePlace.details" map-id="'admin-map-canvas'" search="false"></google-map>
+        </div>
+      </div>
+    </folder>
+  </div>
+  <div class="mg-admin-section" ng-show="googlePlace">
+    <folder title="'Raw google data'" open="false">
+      <textarea class="mg-admin-raw-data" >
+        {{googlePlace | json}}
+      </textarea>
+    </folder>
+  </div>
+
+  <!-- FLickr -->
+  <div class="mg-admin-section" style="height:240px;" ng-show="flickrImages">
+    <folder  title="flickrImagesTitle" open="true" >
+      <div class="mg-admin-place-gallery">
+        <gallery template-url="partials/admin_flickr_gallery.html" items="flickrImages" page-size="24" loading="googleLoading"></gallery>
+      </div>
+    </folder>
+  </div>
+
+</div>

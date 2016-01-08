@@ -1,0 +1,22 @@
+<div ng-hide="items">No items to show</div>
+
+<div ng-show="items" style="height:480px;overflow-y:scroll;overflow-x:hidden">
+  <img ng-show="loading" style="margin:auto;margin-top:20px;width:60px;height:60px" src="img/loader.gif" alt="">
+  <div ng-show="!loading" ng-repeat="item in items | startFrom:currentPage*pageSize | limitTo:pageSize" ng-mouseenter="item.selected=true" ng-mouseleave="item.selected=false;" ng-click="showDetails(item);tripService.showPlaceOnMap(item)" class="insta-place" ng-class="{ selected:item.selected}" data-place-id="{{item.id}}" id="place_{{$index}}">
+    <div style="height:40px">
+      <img class="insta-place-type" ng-src="{{item.icon}}"></img>
+      <span ng-bind="item.name"></span>
+      <div ng-show="item.detailsOpen" class="mg-discover-pane-header-action" style="float:right;cursor:pointer;line-height:12px" ng-click="tripService.addPlace(item)">
+        <img width=20 height=20 src="img/add.png">
+        <p>Add to trip</p>
+      </div>
+    </div>
+    <div ng-show="item.detailsOpen" class="mg-place-details-address">
+      <div>{{cItem.details.formatted_address}}</div> 
+      <div>{{cItem.details.formatted_phone_number}}</div>
+      <div ng-show="cItem.details.website">
+        <a ng-href="{{cItem.details.website}}" target="_blank">open website</a>
+      </div>
+    </div>
+  </div>
+</div>

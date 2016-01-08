@@ -1,0 +1,19 @@
+<div class="mg-place-card">
+  <div class="mg-place-header">
+    <img class="mg-place-header-type" ng-src="{{place.details.icon}}"></img>
+    <div class="mg-place-header-name">{{place.details.name}}</div>
+    <!-- <div class="mg-place-header-action" ng-show="place.showAddAction" ng-click="addPlace(place)" class="mg-plan-pane-header-action">
+      <img src="img/add.png" alt="Add place"></img>
+    </div> -->
+  </div>
+  <div ng-show="place.details" class="mg-place-body">
+      <div class="mg-place-body-address" ng-bind-html="place.details.adr_address"></div>
+      <div class= "mg-place-body-details">
+        <div ng-show="place.details.rating">Rating: {{place.details.rating}} ({{place.details.user_ratings_total}} ratings)</div>
+        <div ng-show="place.details.website"><a ng-href="{{place.deatils.website}}" target="_blank">open website</a></div>
+      </div>
+      <div class= "mg-place-body-map">
+        <img ng-src="{{place.map}}" alt="">
+      </div>
+  </div>
+</div>

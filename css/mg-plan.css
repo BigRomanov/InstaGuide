@@ -1,0 +1,158 @@
+
+
+#mg-plan-content {
+  min-height: 500px; 
+  width: 800px; 
+  float:right;
+}
+
+.mg-plan-content-header {
+  height:30px;
+  padding:10px;
+  border-bottom: 1px solid #eee;
+}
+
+.mg-plan-content-items {
+  padding:10px;
+}
+
+
+.mg-plan-pane {
+  background-color: white;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  width: 398px;
+  float:left;
+  z-index: 99;
+  min-height:500px;
+}
+
+.mg-plan-pane-header {
+  border-bottom: 1px solid #eee;
+  height: 30px;
+  padding: 10px;
+}
+
+.mg-plan-pane-title {
+  float:left;
+  font-size:20px;
+  line-height:20px;
+  height:20px; 
+  padding:2px;
+}
+
+.mg-plan-pane-header-actions {
+  float:right;
+ }
+
+.mg-plan-pane-header-action {
+  cursor: pointer;
+  float: left;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.mg-plan-pane-header-action a {
+  color: #3f729b;
+  display: block;
+  float: left;
+  font-size: 12px;
+  height: 30px;
+  text-align: justify;
+  text-decoration: none;
+  width: 60px;
+}
+
+.mg-plan-pane-header-action p { font-size: 12px; margin-top: 6px; text-align: center; }
+
+.mg-plan-pane-header-action img {height:20px;display: block; margin: auto; }
+
+#mg-plan-pane-content {
+  padding:10px;
+}
+
+#mg-plan-new-trip {
+  padding:10px;
+  width:460px;
+  margin:auto;
+}
+
+
+#mg-plan-new-trip input[type=radio] 
+{
+  margin-right: 5px;
+}
+
+#mg-plan-new-trip input[type=date] 
+{
+  margin-left: 15px;
+}
+
+#mg-plan-new-trip input[type=text],
+                  input[type=url],
+                  input[type=tel],
+                  input[type=number],
+                  input[type=color],
+                  input[type=email]
+{
+  padding:4px;
+  font-size:20px;
+  line-height:20px;
+  border:1px solid #eee;
+  width:450px;
+  text-align: center;
+}
+
+#mg-plan-new-trip ::-webkit-input-placeholder {
+   text-align: center;
+}
+
+#mg-plan-new-trip :-moz-placeholder { /* Firefox 18- */
+   text-align: center;  
+}
+
+#mg-plan-new-trip ::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;  
+}
+
+#mg-plan-new-trip :-ms-input-placeholder {  
+   text-align: center; 
+}
+
+.mg-plan-new-trip-section-type {
+  padding-left:30px;
+  height:30px;
+}
+
+.mg-plan-new-trip-section-type md-radio-button {
+  float:left;
+  margin-right: 20px;
+}
+
+.mg-plan-new-trip-section-type label {
+  margin-left: 20px;
+  padding:2px;
+  line-height:20px;
+}
+
+.mg-plan-new-trip-section-location {
+  padding:10px;
+  height:30px;
+}
+
+.mg-plan-new-trip-section-date {
+  margin-top:10px;
+  padding:10px;
+  height:30px;
+}
+
+.mg-plan-new-trip-section-date label {
+  margin-right: 20px;
+  line-height:20px;
+}
+
+.mg-plan-new-trip-section-date input {
+  height:30px;
+  padding:4px;
+}
+

@@ -1,0 +1,115 @@
+#mg-admin-search-name {
+  padding:4px;
+  margin:4px;
+  width:200px;
+}
+
+.mg-admin-search-coordinate {
+  padding:4px;
+  margin:4px; 
+}
+.mg-admin-search-button {
+  height:26px;
+}
+
+.mg-admin-prediction {
+  height:20px;
+  padding:4px;
+  border:1px solid white;
+}
+
+.mg-admin-prediction.active {
+  border:1px solid #eee;
+  background-color:#eee;
+}
+
+#mg-admin-result {
+
+}
+
+.mg-admin-section {
+  min-height:40px;
+  margin-top: 20px;
+  border:1px solid #eee;
+}
+
+.mg-admin-place {
+  width:100%;
+  min-height: 200px;
+}
+
+.mg-admin-place-details {
+  width:360px;
+  min-height:200px;
+  float:left;
+}
+
+.mg-admin-place-actions {
+  padding:10px;
+  width:200px;
+  min-height:200px;
+  float:left;
+}
+
+.mg-admin-raw-data {
+  width:1180px;
+  height:200px;
+}
+
+.mg-admin-place-map {
+  width:598px;
+  height:200px;
+  float:left;
+}
+
+.mg-admin-place-gallery {
+  width:100%;
+  min-height:200px;
+  float:left;
+}
+
+#admin-map-canvas {
+  width:598px;
+  height:200px;
+  float:left;
+  border:1px solid #eee;
+}
+
+.mg-admin-gallery-prev {
+  width:4%;
+  float:left;
+  height:200px;
+  text-align: center;
+  background-color: #eee;
+}
+
+.mg-admin-gallery-prev img {
+  vertical-align: middle;
+  margin-top:80px;
+  width:30px;
+  height:30px;
+}
+
+.mg-admin-gallery-items {
+  float:left;
+  height:200px;
+  overflow:hidden;
+  width:92%;
+  margin:auto;
+}
+
+.mg-admin-gallery-next {
+  background-color: #eee;
+  width:4%;
+  float:right;
+  height:200px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.mg-admin-gallery-next img {
+  margin-top:80px;
+  vertical-align: middle;
+  width:30px;
+  height:30px;
+}

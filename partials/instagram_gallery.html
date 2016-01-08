@@ -1,0 +1,44 @@
+<!-- list section -->
+<div ng-hide="items">No items to show</div>
+<div ng-show="items && !detailsOpen">
+  <img ng-show="loading" style="display:block;margin:auto;margin-top:20px;width:60px;height:60px" src="img/loader.gif" alt="">
+  <div class="mg-discover-pane-gallery-prev">
+    <img src="img/back.png" ng-show="pages && !loading" ng-click="currentPage=currentPage-1"  alt="">
+  </div>
+  <div style="float:left;height:100%;width:360px;overlflow:hidden">
+    <div ng-show="!loading" ng-repeat="item in items | startFrom:currentPage * pageSize | limitTo:pageSize" class="insta-item">
+      <img ng-click="showDetails(item)" class="insta-thumb" ng-src="{{item.images.thumbnail.url}}"/>
+    </div>
+  </div>
+  <div  class="mg-discover-pane-gallery-prev">
+    <img ng-show="pages && !loading " ng-click="currentPage=currentPage+1" src="img/next.png" alt="">
+  </div>
+</div>
+
+<!-- details section -->
+<div ng-show="items && detailsOpen">
+  <div  class="instagram-details-header">
+    <div style="float:left">
+    <img id="mg-photo-details-user-img" ng-src="{{cItem.user.profile_picture}}"></img>  
+    </div>
+    <div style="float:left;margin-left:10px">
+    <a id="mg-photo-details-user-name" target="_blank" ng-href="https://instagram.com/{{cItem.user.username}}">
+      {{cItem.user.username}}
+    </a>
+    <div id="mg-photo-details-timestamp" class="timestamp">{{cItem.created_time | fuzzytime}}</div>
+    <div>
+      
+      <div ng-show="cItem.location.name">
+        <span id="mg-photo-details-location" class="timestamp">at {{cItem.location.name}}</span>  
+        <img class="mg-photo-details-action" ng-click="renderPhotosFromLocation(cItem.location)" src="img/photos.png" width=12 height=12></img>
+      </div>
+    </div>
+    </div>
+
+    <div style="float:right;cursor:pointer" ng-click="closeDetails()"><img width=20 height=20 src="img/close.png"></img></div>
+  </div> <!-- end of header -->
+
+  <a ng-href="item.link" target="_blank">
+    <img class="details-photo-large" ng-src="{{cItem.images.standard_resolution.url}}"></img>
+  </a>
+</div>

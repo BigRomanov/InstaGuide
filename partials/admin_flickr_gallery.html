@@ -1,0 +1,20 @@
+<div >
+  <img ng-show="loading" style="display:block;margin:auto;margin-top:20px;width:60px;height:60px" src="img/loader.gif" alt="">
+
+  <div class="mg-admin-gallery-prev" ng-show="pages && !loading" ng-click="currentPage=currentPage-1">
+    <img src="img/back.png"  alt="Previous page">
+  </div>
+
+  <div class="mg-admin-gallery-items">
+    <div style="padding-left:10px;">
+      <div ng-show="!loading" ng-repeat="item in items | startFrom:currentPage * pageSize | limitTo:pageSize" class="insta-item">
+        <img class="insta-thumb" ng-src="{{item.url_sq}}"/>
+      </div>
+    </div>
+  </div>
+
+  <div  class="mg-admin-gallery-next" ng-show="pages && !loading " ng-click="currentPage=currentPage+1">
+    <img src="img/next.png" alt="Next page">
+  </div>
+  
+</div>

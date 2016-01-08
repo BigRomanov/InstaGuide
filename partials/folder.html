@@ -1,0 +1,8 @@
+<div style="margin-top:10px">
+  <div>
+	  <img ng-src="img/collapse.png" ng-hide="open" ng-click="open=true" alt="Collapse" style="float:left;margin-left:10px;margin-right:10px">
+	  <img ng-src="img/expand.png" ng-show="open" ng-click="open=false" alt="Expand" style="float:left;margin-left:10px;margin-right:10px">
+	  <p ng-bind="title"></p>
+  </div>
+  <div ng-show="open" ng-transclude style="margin-top:10px"></div>
+</div>

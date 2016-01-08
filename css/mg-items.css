@@ -1,0 +1,147 @@
+/* Place card */
+
+.mg-place-card {
+  height:200px;
+  width:387px;
+  border: 1px solid #eee;
+  float:left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.mg-place-card:nth-child(even) {
+  margin-right: 0px;
+}
+
+.mg-place-header {
+  padding:4px;
+  height:20px;
+  border-bottom: 1px solid #eee;
+}
+
+.mg-place-header-type {
+  height:20px;
+  float:left;
+}
+
+.mg-place-header-name {
+  height:20px;
+  float:left;
+  margin-left: 4px;
+  font-size:14px;
+  font-weight: bold;
+}
+
+.mg-place-header-action {
+  float: right;
+  cursor: pointer;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.mg-place-header-action a {
+  color: #3f729b;
+  display: block;
+  float: left;
+  font-size: 12px;
+  height: 30px;
+  text-align: justify;
+  text-decoration: none;
+  width: 60px;
+}
+
+.mg-place-header-action p { font-size: 12px; margin-top: 6px; text-align: center; }
+
+.mg-place-header-action img {height:20px;display: block; margin: auto; }
+
+.mg-place-body-address {
+  padding:4px;
+  height:40px;
+  background-color: #FFEBCD; /* Blanched almond */
+}
+
+.mg-place-body-details {
+  width:180px;
+  height: 120px;
+  float:left;
+}
+
+.mg-place-body-map {
+  width:180px;
+  height: 120px;
+  float:left;
+}
+
+/* Place card */
+
+/* Trip card */
+.mg-trip-card {
+  height:200px;
+  width:378px;
+  border: 1px solid #eee;
+  float:left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.mg-trip-card:nth-child(even) {
+  margin-right: 0px;
+}
+
+.mg-trip-header {
+  padding:4px;
+  height:20px;
+  border-bottom: 1px solid #eee;
+}
+
+.mg-trip-header-type {
+  height:20px;
+  float:left;
+}
+
+.mg-trip-header-name {
+  height:20px;
+  float:left;
+  margin-left: 4px;
+  font-size:14px;
+  font-weight: bold;
+}
+
+.mg-trip-header-action {
+  float:right;
+  cursor:pointer;
+}
+
+.mg-trip-header-action img {
+  height: 20px;
+}
+
+.mg-trip-body {
+  height:121px;
+  clear:both;
+}
+
+.mg-trip-footer {
+  height: 40px;
+  padding:4px;
+}
+
+.mg-trip-footer-actions {
+  float:right;
+  text-align: right;
+}
+
+/* Trip card */
+
+/* Prediction card */
+
+.mg-prediction {
+  height:40px;
+  width:380px;
+}
+
+.mg-prediction.active {
+  background-color: #eee;
+}
+
+/* Prediction card */

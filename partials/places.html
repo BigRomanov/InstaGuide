@@ -1,0 +1,108 @@
+<div class="mg-view-header">
+  <div class="mg-view-header-content">
+    <!-- <div class="mg-view-header-actions"> -->
+    <div style="width:400px;float:left">
+      <md-tabs md-selected="selectedView">
+        <md-tab class="mg-title">
+          <a style="font-size:12px" href="">Recommended</a>
+        </md-tab>
+        <md-tab>
+          <a style="font-size:12px" href="">Selected</a>
+        </md-tab>
+        <md-tab>
+          <a style="font-size:12px" href="">Discover</a>
+        </md-tab>
+      </md-tabs>
+    </div>
+    <div class="mg-view-search" ng-show="selectedIndex != 2">
+      <form class="search" method="post" action="index.html">
+        <input type="text" name="q" placeholder="Search...">
+        <ul class="results">
+          <li>
+            <a href="index.html">Search Result #1<br>
+                            <span>Description...</span></a>
+          </li>
+          <li>
+            <a href="index.html">Search Result #2<br>
+                            <span>Description...</span></a>
+          </li>
+          <li>
+            <a href="index.html">Search Result #3<br>
+                            <span>Description...</span></a>
+          </li>
+          <li>
+            <a href="index.html">Search Result #4</a>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="mg-view-body">
+  <div class="mg-view-content">
+    <md-progress-linear style="margin-top:-20px" ng-show="loading" md-mode="indeterminate"></md-progress-linear>
+    <div ng-show="selectedView == 0">
+      <div ng-repeat="place in recommended_locations" ng-mouseenter="place.selected=true" ng-mouseleave="place.selected=false" ng-click="showDetails(place)">
+        <place place="place"></place>
+      </div>
+    </div>
+    <div ng-show="selectedView == 1">
+      <div ng-repeat="place in trip.places" ng-mouseenter="place.selected=true" ng-mouseleave="place.selected=false" ng-click="showDetails(place)">
+        <place place="place"></place>
+      </div>
+    </div>
+    <div ng-show="selectedView == 2" ng-controller="DiscoverController">
+      <google-map on-click="onMapClick(lat,lng)" on-init="mapCallback(interface)" map-id="'map-canvas'" search="true"></google-map>
+      <div class="mg-discover-pane">
+        <div class="mg-discover-pane-header">
+          <div class="mg-discover-pane-title">{{title}}</div>
+          <div class="mg-discover-pane-header-actions">
+            <div style="float:left;padding-bottom:6px" ng-class="{ tab_button_active: activeTab == 'instagram'}">
+            <md-button ng-click="renderPhotos()" class="md-fab md-mini md-primary" style="background-color: greenyellow;" aria-label="Instagram">
+              <img src="img/instagram.png" alt="InstagramPhotos">
+              <md-tooltip>Instagram photos</md-tooltip>
+            </md-button>
+            </div>
+            <div style="float:left;padding-bottom:6px" ng-class="{ tab_button_active: activeTab == 'flickr'}">
+            <md-button ng-click="renderFlickrPhotos()" class="md-fab md-mini md-primary" style="background-color: #A3C2FF;" aria-label="Flickr">
+              <img src="img/flickr.png" alt="FlickrPhotos">
+              <md-tooltip>Flickr photos</md-tooltip>
+            </md-button>
+            </div>
+            <div style="float:left;padding-bottom:6px" ng-class="{ tab_button_active: activeTab == 'google'}">
+            <md-button ng-click="renderPlaces()" class="md-fab md-mini md-primary" style="background-color: #FFD685;" aria-label="Google">
+              <img src="img/google_plus.png" alt="InstagramPhotos">
+              <md-tooltip>Google places</md-tooltip>
+            </md-button>
+            </div>
+          </div>
+        </div>
+        <div id="mg-content">
+          <div ng-hide="showResults || showPredictions" style="margin-top:50px;font-size:14px;text-align:center">
+            Click anywhere on the map to discover places around it
+          </div>
+          <div ng-show="showPredictions" style="padding:10px">
+            <div ng-repeat="prediction in predictions" ng-mouseenter="prediction.selected=true" ng-mouseleave="prediction.selected=false" ng-click="showAddressOnMap(prediction.description)">
+              <prediction prediction="prediction"></prediction>
+            </div>
+          </div>
+          <div ng-show="showResults">
+            <div ng-show="activeTab=='instagram'">
+              <div ng-hide="instagramAvailable()" style="width:200px;margin:auto;margin-top:50px">
+                <md-button class="md-raised md-primary" tyle="width:200px;"ng-click="connectToInstagram()">Connect to instagram
+                </md-button>
+              </div>
+              <gallery ng-show="instagramAvailable()" template-url="partials/instagram_gallery.html" items="instagramPhotos" loading="photosLoading"></gallery>
+            </div>
+            <div ng-show="activeTab=='flickr'">
+              <gallery template-url="partials/flickr_gallery.html" item-service="FlickrService" trip-service="TripService" items="flickrPhotos" loading="flickrLoading"></gallery>
+            </div>
+            <div ng-show="activeTab=='google'">
+              <gallery template-url="partials/google_gallery.html" item-service="GoogleService" trip-service="TripService" items="googlePlaces" loading="googleLoading"></gallery>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

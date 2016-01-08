@@ -1,0 +1,40 @@
+<div class="mg-view-header">
+  <div class="mg-view-header-content">
+    <div class="mg-view-header-actions">
+      <md-button class="md-raised md-primary" ng-disabled="newtrip.location==''" ng-click="createTrip()">Create new trip</md-button>
+     </div>
+    <div class="mg-view-search">
+      <form class="search" method="post" action="index.html">
+        <input type="text" name="q" placeholder="Search...">
+        <ul class="results">
+          <li>
+            <a href="index.html">Search Result #1<br>
+                            <span>Description...</span></a>
+          </li>
+          <li>
+            <a href="index.html">Search Result #2<br>
+                            <span>Description...</span></a>
+          </li>
+          <li>
+            <a href="index.html">Search Result #3<br>
+                            <span>Description...</span></a>
+          </li>
+          <li>
+            <a href="index.html">Search Result #4</a>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="mg-view-body">
+  <div class="mg-view-content">
+    <md-progress-linear style="margin-top:-20px" ng-show="loading" md-mode="indeterminate"></md-progress-linear>
+    <div>
+      <div ng-repeat="trip in trips" ng-mouseenter="trip.selected=true" ng-mouseleave="trip.selected=false">
+        <trip trip="trip" delete="deleteTrip(trip)" select="planTrip(trip)"></trip>
+      </div>
+    </div>
+  </div>
+</div>

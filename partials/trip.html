@@ -1,0 +1,17 @@
+<div class="mg-trip-card" ng-mouseenter="trip.selected=true" ng-mouseleave="trip.selected=false" >
+  <div class="mg-trip-header">
+    <!-- <img class="mg-trip-header-type" ng-src="{{trip.details.icon}}"></img> -->
+    <div class="mg-trip-header-name">{{trip.title}}</div>
+    <div class="mg-trip-header-actions" ng-show="trip.selected">
+      <div class="mg-trip-header-action" ng-click="confirmDelete()"><img src="img/bin.png" alt="Delete trip"></div>
+    </div>
+  </div>
+  <div class="mg-trip-body">
+    Add details about trip and its locations
+  </div>
+  <div class="mg-trip-footer">
+    <div class="mg-trip-footer-actions">
+      <md-button md-no-ink class="md-primary" ng-show="trip.selected" ng-click="select()">Plan this trip</md-button>
+    </div>
+  </div>
+</div>

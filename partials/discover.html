@@ -1,0 +1,46 @@
+<google-map on-click="onMapClick(lat,lng)" on-init="mapCallback(interface)" map-id="'map-canvas'" search="true"></google-map>
+<div class="mg-discover-pane">
+  <div class="mg-discover-pane-header">
+    <div class="mg-discover-pane-header-actions">
+      <div ng-click="renderPhotos()" class="mg-discover-pane-header-action">
+        <img src="img/instagram.png" alt="InstagramPhotos">
+        <p> Instagram
+        </p>
+      </div>
+      <div ng-click="renderFlickrPhotos()" class="mg-discover-pane-header-action">
+        <img src="img/flickr.png" alt="Flickr Photos">
+        <p>
+          Flickr
+        </p>
+      </div>
+      <div ng-click="renderPlaces()" class="mg-discover-pane-header-action">
+        <img src="img/google_plus.png" alt="Places">
+        <p>
+          Google
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="mg-content">
+    <div ng-hide="showResults || showPredictions" style="margin-top:50px;font-size:14px;text-align:center">
+      Click anywhere on the map to discover places around it
+    </div>
+    <div ng-show="showPredictions" style="padding:10px">
+      <div ng-repeat="prediction in predictions" ng-mouseenter="prediction.selected=true" 
+                                                 ng-mouseleave="prediction.selected=false" 
+                                                 ng-click="showAddressOnMap(prediction.description)">
+        <prediction prediction="prediction"></prediction>
+      </div>
+    </div>
+    <div ng-show="activeTab=='instagram'">
+      <gallery template-url="partials/instagram_gallery.html" items="instagramPhotos" loading="photosLoading"></gallery>
+    </div>
+    <div ng-show="activeTab=='flickr'">
+        <gallery template-url="partials/flickr_gallery.html" item-service="FlickrService" trip-service="TripService" items="flickrPhotos" loading="flickrLoading"></gallery>
+    </div>
+    <div ng-show="activeTab=='google'">
+      <gallery template-url="partials/google_gallery.html" item-service="GoogleService" trip-service="TripService" items="googlePlaces" loading="googleLoading"></gallery>
+
+    </div>
+  </div>
+</div>
