@@ -1,5 +1,6 @@
-MyGuideApp.controller('DiscoverController', ['$scope', '$timeout', '$window', '$location', '$routeParams', 'TripService', 'InstagramService', 'GoogleService', 'FlickrService',
-  function($scope, $timeout, $window, $location, $routeParams, TripService, InstagramService, GoogleService, FlickrService) {
+MyGuideApp.controller('DiscoverController', ['$scope', '$timeout', '$window', '$location', '$routeParams', 
+    'TripService', 'InstagramService', 'GoogleService', 'FlickrService', 'PhotoService',
+  function($scope, $timeout, $window, $location, $routeParams, TripService, InstagramService, GoogleService, FlickrService, PhotoService) {
 
     // Data models
     $scope.photos = [];

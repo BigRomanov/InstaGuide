@@ -11,4 +11,4 @@ MyGuideApp.service('PhotoService', ['$http', 'FlickrService', function($http, Fl
     }
   };
 
-});
+}]);
