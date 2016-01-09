@@ -7,10 +7,10 @@ MyGuideApp.service('InstagramService', ['$http', function($http) {
     return this.access_token != null;
   }
 
-  this.getImagesByLatLng = function(lat, lng, distance, callback, limit) {
+  this.getImagesByLatLng = function(lat, lng, callback) {
       var self = this;
 
-      limit = typeof limit !== 'undefined' ? limit : 2;
+      distance = 10;
       
       // Go to the instagram api and get the data
       var search_url = "https://api.instagram.com/v1/media/search?"
@@ -25,14 +25,11 @@ MyGuideApp.service('InstagramService', ['$http', function($http) {
 
       $http.jsonp(search_url).
       success(function(data, status, headers, config) {
-        console.log("Instagram photos, success",data,status);
 
         // Initialize the collection of images
         var images = data.data;
 
-        //console.log("Images uploaded from location", images);
-
-        // Get all places nearby
+        // Get images from all places nearby
         //TODO: Determine of the place is in large city and calculate distance accordingly
         self.getPlacesByLatLng(lat,lng, 500, function(places) {
           if (!places || !places.length) 
@@ -50,13 +47,24 @@ MyGuideApp.service('InstagramService', ['$http', function($http) {
           }, function(err) {
             if(err) {
               console.log("There was an error" + err);
-            } else {
-              console.log("Loaded isntagram images from all locations", images.length, images);
+              callback(err, null);
+            } 
+            else {
+              console.log("Loaded Instagram images from all locations", images.length, images);
 
               // TODO: Add retry if not enough
               images = _.sortBy(images, function(image) {return -image.created_time});
 
-              callback(images);
+              // Normalize photo data
+              _.each(images, function(photo) {
+                photo.mg_source = "instagram";
+                photo.mg_thumb_view_url = photo.images.thumbnail.url;
+                photo.mg_details_view_url = photo.images.standard_resolution.url;
+                photo.mg_user_name = photo.user.username;
+                photo.mg_user_url = "https://instagram.com/"+photo.user_name;
+              });
+
+              callback(null, images);
             }
           });
         })

@@ -1,40 +1,43 @@
 <google-map on-click="onMapClick(lat,lng)" on-init="mapCallback(interface)" map-id="'map-canvas'" search="true"></google-map>
 <div class="mg-discover-pane">
   <div class="mg-discover-pane-header">
-    <div class="mg-discover-pane-header-actions">
-      <md-button class="md-icon-button" aria-label="More" ng-click="showFlights()">
-        <md-icon md-svg-icon="img/svg/ic_photo_camera_black_24px.svg"></md-icon>
+    <div style="float:left;line-height:50px" class=".md-title">{{title}}</div>
+    <div class="mg-discover-pane-header-actions" layout="row">      
+      <md-button class="md-icon-button" aria-label="Articles" ng-click="showArticles()" ng-class="{'mg-discover-pane-active-button' : activeTab==1}">
+        <md-icon md-svg-icon="img/svg/ic_articles_black_24px.svg"></md-icon>
+        <md-tooltip>Articles</md-tooltip>
+      </md-button>
+      <md-button class="md-icon-button" aria-label="Flights" ng-click="showFlights()" ng-class="{'mg-discover-pane-active-button' : activeTab==2}">
+        <md-icon md-svg-icon="img/svg/ic_flight_black_24px.svg"></md-icon>
         <md-tooltip>Flights</md-tooltip>
       </md-button>
-      <md-button class="md-icon-button" aria-label="More" ng-click="showPhotos()">
+
+      <md-button class="md-icon-button" aria-label="Photos" ng-click="showPhotos()" ng-class="{'mg-discover-pane-active-button' : activeTab==3}">
         <md-icon md-svg-icon="img/svg/ic_photo_camera_black_24px.svg"></md-icon>
         <md-tooltip>Photos</md-tooltip>
       </md-button>
-      <md-button class="md-icon-button" aria-label="More" ng-click="showPlaces()">
-        <md-icon md-svg-icon="img/svg/ic_photo_camera_black_24px.svg"></md-icon>
+      <md-button class="md-icon-button" aria-label="Places" ng-click="showPlaces()" ng-class="{'mg-discover-pane-active-button' : activeTab==4}">
+        <md-icon md-svg-icon="img/svg/ic_place_black_24px.svg"></md-icon>
         <md-tooltip>Places</md-tooltip>
       </md-button>
       
     </div>
   </div>
   <div id="mg-content">
-    <div ng-hide="showResults || showPredictions" style="margin-top:50px;font-size:14px;text-align:center">
-      Click anywhere on the map to discover places around it
+    <!-- Articles -->
+    <div ng-show="activeTab==1">
+      Add gallery for articles
     </div>
-    <div ng-show="showPredictions" style="padding:10px">
-      <div ng-repeat="prediction in predictions" ng-mouseenter="prediction.selected=true" 
-                                                 ng-mouseleave="prediction.selected=false" 
-                                                 ng-click="showAddressOnMap(prediction.description)">
-        <prediction prediction="prediction"></prediction>
-      </div>
+    <!-- Flights -->
+    <div ng-show="activeTab==2">
+      Add gallery for flights
     </div>
-    <div ng-show="activeTab=='instagram'">
-      <gallery template-url="partials/instagram_gallery.html" items="instagramPhotos" loading="photosLoading"></gallery>
+    <!-- Photos -->
+    <div ng-show="activeTab==3">
+        <gallery template-url="partials/photo_gallery.html" item-service="PhotoService" trip-service="TripService" items="photos" loading="photosLoading"></gallery>
     </div>
-    <div ng-show="activeTab=='flickr'">
-        <gallery template-url="partials/flickr_gallery.html" item-service="FlickrService" trip-service="TripService" items="flickrPhotos" loading="flickrLoading"></gallery>
-    </div>
-    <div ng-show="activeTab=='google'">
+    <!-- Places -->
+    <div ng-show="activeTab==4">
       <gallery template-url="partials/google_gallery.html" item-service="GoogleService" trip-service="TripService" items="googlePlaces" loading="googleLoading"></gallery>
 
     </div>

@@ -1,0 +1,40 @@
+<!-- Thumb view -->
+<div ng-hide="detailsOpen">
+  <md-progress-linear ng-show="loading" md-mode="indeterminate"></md-progress-linear>
+  <md-tabs md-stretch-tabs md-selected="currentPage" md-border-bottom>
+    <md-tab ng-repeat="tab in tabs track by $index">
+      <p>{{$index+1}}</p>
+    </md-tab>
+  </md-tabs>
+  <div ng-show="!loading" style="width:360px;height:400px;margin:auto;overlflow:hidden;margin-top:20px">
+    <div ng-repeat="item in items | startFrom:currentPage * pageSize | limitTo:pageSize" class="insta-item">
+      <img ng-click="showDetails(item)" class="insta-thumb" ng-src="{{item.mg_thumb_view_url}}" />
+    </div>
+  </div>
+</div>
+<!-- Details view -->
+<div ng-show="detailsOpen">
+  <md-card>
+    <div class="md-actions" layout="row" layout-align="right">
+      <!-- Photographer -->
+      <div style="float:left;width:50%">
+        <img id="mg-photo-details-user-img" ng-src="{{cItem.profile_picture}}" style="vertical-align:middle"></img>
+        <div style="float:left;margin-left:10px;height:20px">
+          <div>
+            <a id="mg-photo-details-user-name" target="_blank" ng-href="{{cItem.mg_user_url}}">{{cItem.mg_user_name}}</a>
+          </div>
+        </div>
+      </div>
+      <!-- Photo actions -->
+      <div style="float:left;width:50%">
+        <md-button ng-click="closeDetails()" class="md-icon-button " aria-label="Close" style="width:24px;height:24px;float:right">
+          <md-icon md-svg-icon="img/close.svg"></md-icon>
+          <md-tooltip>Close</md-tooltip>
+        </md-button>
+      </div>
+    </div>
+    <a ng-href="item.link" target="_blank">
+      <img class="md-card-image" ng-src="{{cItem.mg_details_view}}"></img>
+    </a>
+  </md-card>
+</div>

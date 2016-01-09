@@ -18,6 +18,11 @@
   padding: 10px;
 }
 
+.mg-discover-pane-active-button {
+  border-bottom:2px solid green;
+  background-color:#22AA22;
+}
+
 .tab_button_active {
   border-bottom: 3px solid red;
 }

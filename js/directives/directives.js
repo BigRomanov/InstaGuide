@@ -44,8 +44,7 @@ MyGuideApp.directive('gallery', ['$timeout', 'startFromFilter', function($timeou
     scope: {
       items: '=',
       loading: '=',
-      pageSize: '=?',
-      loadDetails: '&?'
+      pageSize: '=?'
     },
     link: function (scope, element, attrs) {
       scope.pageSize = scope.pageSize? scope.pageSize : 16;
@@ -80,9 +79,8 @@ MyGuideApp.directive('gallery', ['$timeout', 'startFromFilter', function($timeou
         
         scope.detailsOpen = true;
 
-        if (scope.service) {
-          scope.service.getItemDetails(item, function(item) {
-
+        if (scope.itemService) {
+          scope.itemService.getItemDetails(item, function(item) {
             //TODO: Create a proper adapter for each time of item in the gallery
             scope.tripService.resetMarkers();
             scope.tripService.showLocationOnMap(item.latitude, item.longitude)
@@ -115,7 +113,7 @@ MyGuideApp.directive('gallery', ['$timeout', 'startFromFilter', function($timeou
     controller: function($scope, $element, $attrs, $injector) {
       // Get the service responsible for processing items from directive attribute
       if ($attrs.itemService)
-        $scope.service = $injector.get($attrs.itemService);
+        $scope.itemService = $injector.get($attrs.itemService);
 
       // Get the service responsible for trip management from directive attribute
       if ($attrs.tripService)

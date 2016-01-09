@@ -50,24 +50,6 @@ MyGuideApp.service('FlickrService', ['$http', function($http) {
       item.profileUrl = item.person.profileurl._content;
       _callback(item);
     });
-
-    // self.getPlaceInfo(item.place_id, function(data) {
-    //   console.log("Place data", data);
-    //   item.place = data.place;
-    // });
-
-    // self.getPersonInfo(item.owner, function(data) {
-    //   console.log("Person data", data);
-    //   item.person = data.person;
-      
-    //   item.profile_picture = self.constructBuddyiconUrl(data.person);
-    //   if ('realname' in data.person)
-    //     item.username = data.person.realname._content;
-    //   else
-    //     item.username = data.person.username._content;
-
-    //   item.profileUrl = data.person.profileurl._content;
-    // });
   }
 
   // Retrieve available sizes for photo with specific id
@@ -226,15 +208,23 @@ MyGuideApp.service('FlickrService', ['$http', function($http) {
       + "&format=json"
       + '&jsoncallback=JSON_CALLBACK';
 
-    console.log(search_url);
+    console.log("FlickrService::getImagesByLatLng: url = " + search_url);
 
     $http.jsonp(search_url).
       success(function(data, status, headers, config) {
-        console.log("FlickrService::getImagesByLatLng", data, status);
-        callback(data.photos.photo);
+        var photos = data.photos.photo;
+        _.each(photos, function(photo) {
+          photo.mg_source = "flickr";
+          photo.mg_thumb_view_url = photo.url_sq;
+          photo.mh_details_view_url = photo.url_m;
+          photo.mg_user_name = photo.username;
+          photo.mg_user_url = photo.profileUrl;
+        });
+        callback(null, photos);
       }).
       error(function(data, status, headers, config) {
         console.log("Error", data, status);
+        callback(data, null);
       });
   }
 
