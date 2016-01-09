@@ -45,7 +45,8 @@ MyGuideApp.directive('googleMap', ['$timeout', '$compile', function($timeout, $c
 
         var mapOptions = {
           center: new google.maps.LatLng(lat,lng),
-          zoom: 16
+          zoom: 16,
+          mapTypeControl: false,
         };
 
         document.getElementById(scope.mapId).style.display = "block";

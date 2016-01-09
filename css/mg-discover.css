@@ -3,7 +3,7 @@
 .mg-discover-pane {
   position: absolute;
   top:0;
-  right:0;
+  right:60px;
   background-color: white;
   border: 1px solid #eee;
   width: 398px;
@@ -18,9 +18,8 @@
   padding: 10px;
 }
 
-.mg-discover-pane-active-button {
-  border-bottom:2px solid green;
-  background-color:#22AA22;
+.mg-discover-pane-active-button svg {
+  fill: green;
 }
 
 .tab_button_active {

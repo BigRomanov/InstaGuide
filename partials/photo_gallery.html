@@ -18,7 +18,7 @@
     <div class="md-actions" layout="row" layout-align="right">
       <!-- Photographer -->
       <div style="float:left;width:50%">
-        <img id="mg-photo-details-user-img" ng-src="{{cItem.profile_picture}}" style="vertical-align:middle"></img>
+        <img id="mg-photo-details-user-img" ng-src="{{cItem.mg_user_img}}" style="vertical-align:middle"></img>
         <div style="float:left;margin-left:10px;height:20px">
           <div>
             <a id="mg-photo-details-user-name" target="_blank" ng-href="{{cItem.mg_user_url}}">{{cItem.mg_user_name}}</a>
@@ -27,14 +27,14 @@
       </div>
       <!-- Photo actions -->
       <div style="float:left;width:50%">
-        <md-button ng-click="closeDetails()" class="md-icon-button " aria-label="Close" style="width:24px;height:24px;float:right">
+        <md-button ng-click="closeDetails()" class="md-icon-button " aria-label="Close" style="float:right">
           <md-icon md-svg-icon="img/close.svg"></md-icon>
           <md-tooltip>Close</md-tooltip>
         </md-button>
       </div>
     </div>
-    <a ng-href="item.link" target="_blank">
-      <img class="md-card-image" ng-src="{{cItem.mg_details_view}}"></img>
+    <a ng-href="{{item.link}}" target="_blank">
+      <img class="md-card-image" ng-src="{{cItem.mg_details_view_url}}"></img>
     </a>
   </md-card>
 </div>

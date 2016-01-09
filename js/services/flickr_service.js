@@ -41,13 +41,15 @@ MyGuideApp.service('FlickrService', ['$http', function($http) {
       item.person = results[1];
 
       // Initialize few additional fields
-      item.profile_picture = self.constructBuddyiconUrl(item.person);
-      if ('realname' in item.person)
-        item.username = item.person.realname._content;
-      else
-        item.username = item.person.username._content;
+      // TODO: Refactor with better abstraction between flickr model and mg_ model ????
+      item.mg_user_img = self.constructBuddyiconUrl(item.person);
 
-      item.profileUrl = item.person.profileurl._content;
+      if ('realname' in item.person)
+        item.mg_user_name = item.person.realname._content;
+      else
+        item.mg_user_name = item.person.username._content;
+
+      item.mg_user_url = item.person.profileurl._content;
       _callback(item);
     });
   }
@@ -216,9 +218,10 @@ MyGuideApp.service('FlickrService', ['$http', function($http) {
         _.each(photos, function(photo) {
           photo.mg_source = "flickr";
           photo.mg_thumb_view_url = photo.url_sq;
-          photo.mh_details_view_url = photo.url_m;
+          photo.mg_details_view_url = photo.url_m;
           photo.mg_user_name = photo.username;
           photo.mg_user_url = photo.profileUrl;
+          photo.mg_user_img = photo.profile_picture;
         });
         callback(null, photos);
       }).
