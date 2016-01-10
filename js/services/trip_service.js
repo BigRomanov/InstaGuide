@@ -1,4 +1,4 @@
-MyGuideApp.service('TripService', ['$http', 'Trip', function($http, Trip) {
+app.service('TripService', ['$http', 'Trip', function($http, Trip) {
 
   this.recommended_locations = [
   {

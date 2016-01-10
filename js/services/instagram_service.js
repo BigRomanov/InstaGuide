@@ -1,4 +1,4 @@
-MyGuideApp.service('InstagramService', ['$http', function($http) {
+app.service('InstagramService', ['$http', function($http) {
 
   this.access_token = "7927273.cb524b4.a3bb749a83f84512ac55892c5d1ee1f1";
   

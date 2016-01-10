@@ -1,4 +1,4 @@
-MyGuideApp.controller('DiscoverController', ['$scope', '$timeout', '$window', '$location', '$routeParams', 
+app.controller('DiscoverController', ['$scope', '$timeout', '$window', '$location', '$routeParams', 
     'TripService', 'InstagramService', 'GoogleService', 'FlickrService', 'PhotoService',
   function($scope, $timeout, $window, $location, $routeParams, TripService, InstagramService, GoogleService, FlickrService, PhotoService) {
 

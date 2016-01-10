@@ -1,4 +1,4 @@
-MyGuideApp.directive('folder', ['$timeout', function($timeout) {
+app.directive('folder', ['$timeout', function($timeout) {
   return {
     restrict: 'E',
     transclude: true,
@@ -12,7 +12,7 @@ MyGuideApp.directive('folder', ['$timeout', function($timeout) {
   }
 }]);
 
-MyGuideApp.directive('ngEnter', function () {
+app.directive('ngEnter', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
             if(event.which === 13) {
@@ -26,7 +26,18 @@ MyGuideApp.directive('ngEnter', function () {
     };
 });
 
-MyGuideApp.directive('stopEvent', function () {
+app.directive('imageonload', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            element.bind('load', function() {
+                alert('image is loaded');
+            });
+        }
+    };
+});
+
+app.directive('stopEvent', function () {
   return {
     restrict: 'A',
     link: function (scope, element, attr) {
@@ -38,7 +49,7 @@ MyGuideApp.directive('stopEvent', function () {
 });
 
 
-MyGuideApp.directive('gallery', ['$timeout', 'startFromFilter', function($timeout) {
+app.directive('gallery', ['$timeout', 'startFromFilter', function($timeout) {
   return {
     restrict: 'E',
     scope: {
@@ -125,7 +136,7 @@ MyGuideApp.directive('gallery', ['$timeout', 'startFromFilter', function($timeou
   };
 }]);
 
-MyGuideApp.directive('place', ['$timeout', function($timeout) {
+app.directive('place', ['$timeout', function($timeout) {
   return {
     restrict: 'E',
     scope: {
@@ -140,7 +151,7 @@ MyGuideApp.directive('place', ['$timeout', function($timeout) {
 }]);
 
 
-MyGuideApp.directive('trip', ['$timeout', function($timeout) {
+app.directive('trip', ['$timeout', function($timeout) {
   return {
     restrict: 'E',
     scope: {
@@ -173,7 +184,7 @@ MyGuideApp.directive('trip', ['$timeout', function($timeout) {
   }
 }]);
 
-MyGuideApp.directive('prediction', ['$timeout', function($timeout) {
+app.directive('prediction', ['$timeout', function($timeout) {
   return {
     restrict: 'E',
     scope: {

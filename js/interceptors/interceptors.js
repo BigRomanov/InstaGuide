@@ -1,4 +1,4 @@
-MyGuideApp.factory('AuthTokenInterceptor', function($q) {
+app.factory('AuthTokenInterceptor', function($q) {
   return {
     // optional method
     'request': function(config) {

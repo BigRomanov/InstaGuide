@@ -5,7 +5,7 @@ var getTemplate = function(search) {
     return '<div id="{{mapId}}"></div>';
 }
 
-MyGuideApp.directive('googleMap', ['$timeout', '$compile', function($timeout, $compile) {
+app.directive('googleMap', ['$timeout', '$compile', function($timeout, $compile) {
   return {
     restrict: 'E',
     scope: {

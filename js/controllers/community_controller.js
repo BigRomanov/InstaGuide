@@ -1,4 +1,4 @@
-MyGuideApp.controller('CommunityController', ['$scope', '$timeout' ,'$window', '$location', 'TripService',
+app.controller('CommunityController', ['$scope', '$timeout' ,'$window', '$location', 'TripService',
   function ($scope, $timeout, $window, $location, TripService) {
 
     $scope.trip = null;

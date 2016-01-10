@@ -1,4 +1,4 @@
-MyGuideApp.controller('InstagramTokenController', ['$scope', '$timeout' ,'$window', '$location', 'InstagramService',
+app.controller('InstagramTokenController', ['$scope', '$timeout' ,'$window', '$location', 'InstagramService',
   function ($scope, $timeout, $window, $location, InstagramService) {
 
 

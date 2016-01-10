@@ -1,6 +1,6 @@
-var MyGuideApp = angular.module('MyGuideApp', ['ngRoute', 'ngResource', 'ngSanitize', 'ngMaterial', 'dibari.angular-ellipsis']);
+var app = angular.module('app', ['ngRoute', 'ngResource', 'ngSanitize', 'ngMaterial', 'dibari.angular-ellipsis']);
 
-MyGuideApp.config(['$routeProvider', '$locationProvider', '$httpProvider',
+app.config(['$routeProvider', '$locationProvider', '$httpProvider',
   function($routeProvider, $locationProvider, $httpProvider) {
 
     $routeProvider.
@@ -20,7 +20,7 @@ MyGuideApp.config(['$routeProvider', '$locationProvider', '$httpProvider',
   }
 ]);
 
-MyGuideApp.run(['$location', '$rootScope', 'TripService', function($location, $rootScope, TripService) {
+app.run(['$location', '$rootScope', 'TripService', function($location, $rootScope, TripService) {
   // $rootScope.$on('$routeChangeStart', function (event, current, previous) {
   //     // In case user does not have any trips yet, redirect to start page  
   //     if (current.$$route.originalPath != "/start" && TripService.trips.length == 0) {
@@ -31,7 +31,7 @@ MyGuideApp.run(['$location', '$rootScope', 'TripService', function($location, $r
   // });    
 }]);
 
-MyGuideApp.controller('HeaderController', function($scope, $location) {
+app.controller('HeaderController', function($scope, $location) {
   console.log("Current location:", $location.path());
   // $scope.selectedIndex = 0;
 

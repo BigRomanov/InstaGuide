@@ -1,4 +1,4 @@
-MyGuideApp.service('PhotoService', ['$http', 'FlickrService', function($http, FlickrService) {
+app.service('PhotoService', ['$http', 'FlickrService', function($http, FlickrService) {
   // Callback from the gallery
   this.getItemDetails = function(item, _callback) {
     // Get item details with matching provider

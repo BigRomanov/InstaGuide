@@ -1,4 +1,4 @@
-MyGuideApp.filter('startFrom', function() {
+app.filter('startFrom', function() {
     return function(input, start) {
         if (input) {
             start = +start; //parse to int
@@ -9,7 +9,7 @@ MyGuideApp.filter('startFrom', function() {
     }
 });
 
-MyGuideApp.filter('fuzzytime', function() {
+app.filter('fuzzytime', function() {
   return function(time) {
 
     var templates = {

@@ -1,4 +1,4 @@
-MyGuideApp.service('FlickrService', ['$http', function($http) {
+app.service('FlickrService', ['$http', function($http) {
 
   this.api_key = "a3e91cf712a7fc8b67aa0210eb0c6866";
 

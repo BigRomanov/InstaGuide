@@ -1,4 +1,4 @@
-MyGuideApp.controller('StartController', ['$scope', '$timeout' ,'$window', '$location', 'TripService', 
+app.controller('StartController', ['$scope', '$timeout' ,'$window', '$location', 'TripService', 
   function ($scope, $timeout, $window, $location, TripService) {
 
     $scope.createTrip = function() {

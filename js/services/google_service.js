@@ -1,4 +1,4 @@
-MyGuideApp.service('GoogleService', ['$http', function($http) {
+app.service('GoogleService', ['$http', function($http) {
 
     var service = null;
 

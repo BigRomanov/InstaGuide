@@ -1,4 +1,4 @@
-MyGuideApp.controller('PlacesController', ['$scope', '$timeout' ,'$window', '$location', '$routeParams', 'TripService',
+app.controller('PlacesController', ['$scope', '$timeout' ,'$window', '$location', '$routeParams', 'TripService',
   function ($scope, $timeout, $window, $location, $routeParams, TripService) {
 
     $scope.init = function() {

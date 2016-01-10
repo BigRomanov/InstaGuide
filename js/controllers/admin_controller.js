@@ -1,4 +1,4 @@
-MyGuideApp.controller('AdminController', ['$scope', '$timeout' ,'$window', '$location', 'TripService', 'GoogleService', 'FlickrService',
+app.controller('AdminController', ['$scope', '$timeout' ,'$window', '$location', 'TripService', 'GoogleService', 'FlickrService',
   function ($scope, $timeout, $window, $location, TripService, GoogleService,FlickrService) {
 
     $scope.searchPlace = function() {

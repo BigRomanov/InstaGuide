@@ -1,4 +1,4 @@
-MyGuideApp.controller('LoginController', ['$scope', '$timeout' ,'$window', 'InstagramService', 'GoogleService', 'PlacesService',
+app.controller('LoginController', ['$scope', '$timeout' ,'$window', 'InstagramService', 'GoogleService', 'PlacesService',
   function ($scope, $timeout, $window, InstagramService, GoogleService, PlacesService) {
 
     $scope.username = "";

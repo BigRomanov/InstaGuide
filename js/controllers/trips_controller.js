@@ -1,4 +1,4 @@
-MyGuideApp.controller('TripsController', ['$scope', '$timeout' ,'$window', '$location', 'TripService',
+app.controller('TripsController', ['$scope', '$timeout' ,'$window', '$location', 'TripService',
   function ($scope, $timeout, $window, $location, TripService) {
 
     $scope.deleteTrip = function(trip) {
