@@ -17,19 +17,28 @@
   <md-card>
     <div class="md-actions" layout="row" layout-align="right">
       <!-- Photographer -->
-      <div style="float:left;width:50%">
+      <div style="float:left;width:250px">
         <img id="mg-photo-details-user-img" ng-src="{{cItem.mg_user_img}}" style="vertical-align:middle"></img>
         <div style="float:left;margin-left:10px;height:20px">
-          <div>
-            <a id="mg-photo-details-user-name" target="_blank" ng-href="{{cItem.mg_user_url}}">{{cItem.mg_user_name}}</a>
+          <div style="overflow:hidden; width:140px;max-height:20px">
+            <a id="mg-photo-details-user-name" target="_blank" ng-href="{{cItem.mg_user_url}}"><p ellipsis ng-bind="cItem.mg_user_name"></p></a>
           </div>
+          <div style="font-style:italic;font-size:12px">{{cItem.mg_source}}</div>
         </div>
       </div>
       <!-- Photo actions -->
-      <div style="float:left;width:50%">
-        <md-button ng-click="closeDetails()" class="md-icon-button " aria-label="Close" style="float:right">
+      <div style="float:left;width:150px">
+        <md-button ng-click="closeDetails()" class="md-icon-button " aria-label="Close" style="float:right;margin:0">
           <md-icon md-svg-icon="img/close.svg"></md-icon>
           <md-tooltip>Close</md-tooltip>
+        </md-button>
+        <md-button ng-click="nextItem()" class="md-icon-button " aria-label="Next" style="float:right;margin:0">
+          <md-icon md-svg-icon="img/svg/ic_navigate_next_black_24px.svg"></md-icon>
+          <md-tooltip>Next</md-tooltip>
+        </md-button>
+        <md-button ng-click="prevItem()" class="md-icon-button " aria-label="Prev" style="float:right;margin:0">
+          <md-icon md-svg-icon="img/svg/ic_navigate_before_black_24px.svg"></md-icon>
+          <md-tooltip>Previous</md-tooltip>
         </md-button>
       </div>
     </div>

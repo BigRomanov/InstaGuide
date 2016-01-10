@@ -80,10 +80,12 @@ MyGuideApp.directive('gallery', ['$timeout', 'startFromFilter', function($timeou
         scope.detailsOpen = true;
 
         if (scope.itemService) {
+          scope.loading = true;
           scope.itemService.getItemDetails(item, function(item) {
             //TODO: Create a proper adapter for each time of item in the gallery
             scope.tripService.resetMarkers();
-            scope.tripService.showLocationOnMap(item.latitude, item.longitude)
+            scope.tripService.showLocationOnMap(item.latitude, item.longitude);
+            scope.loading = false;
           });
         }
       };

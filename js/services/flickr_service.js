@@ -44,7 +44,7 @@ MyGuideApp.service('FlickrService', ['$http', function($http) {
       // TODO: Refactor with better abstraction between flickr model and mg_ model ????
       item.mg_user_img = self.constructBuddyiconUrl(item.person);
 
-      if ('realname' in item.person)
+      if ('realname' in item.person && item.person.realname._content != '')
         item.mg_user_name = item.person.realname._content;
       else
         item.mg_user_name = item.person.username._content;

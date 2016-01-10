@@ -1,4 +1,4 @@
-var MyGuideApp = angular.module('MyGuideApp', ['ngRoute', 'ngResource', 'ngSanitize', 'ngMaterial']);
+var MyGuideApp = angular.module('MyGuideApp', ['ngRoute', 'ngResource', 'ngSanitize', 'ngMaterial', 'dibari.angular-ellipsis']);
 
 MyGuideApp.config(['$routeProvider', '$locationProvider', '$httpProvider',
   function($routeProvider, $locationProvider, $httpProvider) {
