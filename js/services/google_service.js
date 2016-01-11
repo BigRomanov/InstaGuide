@@ -27,6 +27,7 @@ app.service('GoogleService', ['$http', function($http) {
       service.getQueryPredictions({ input: name }, callback);
     }
 
+    // Determine country and city of the clicked coordinates
     this.getLocationByLatLng = function(lat, lng, callback) {
       this.geocoder.geocode({'location': {lat:lat, lng:lng}}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
@@ -35,7 +36,6 @@ app.service('GoogleService', ['$http', function($http) {
         var country = "";
 
         _.each(result.address_components, function(component) {
-          console.log(component, component.types);
           if (component.types[0] == 'locality') {
             city = component.long_name;
           }
@@ -52,7 +52,7 @@ app.service('GoogleService', ['$http', function($http) {
     });
     }
 
-    this.getPlacesByLatLng = function(lat, lng, distance, callback) {
+    this.getPlacesByLatLng = function(lat, lng, callback) {
       var self = this;
       var point = new google.maps.LatLng(lat, lng);
       var request = {
@@ -60,32 +60,28 @@ app.service('GoogleService', ['$http', function($http) {
         radius: 500
       };
       this.service.nearbySearch(request, function(results, status) {
+        console.log("GoogleService::getPlacesByLatLng", results, results.length);
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-
-          console.log(results);
 
           // Sort results by distance from the point
           var sorted = _.sortBy(results, function(place) {
-            return getDistance(lat, lng, place.geometry.location.k, place.geometry.location.D);
+            return getDistance(lat, lng, place.geometry.location.lat(), place.geometry.location.lng());
           })
 
           var filtered = _.filter(sorted, function(place) {
               return _.some(place.types, function(type) {
-                return (type == "airport"          || 
-                        type == "amusement_park"   ||
-                        type == "cafe"             || 
-                        type == "food"             || 
-                        type == "bar"              || 
-                        type == "lodging"          || 
-                        type == "store"            || 
-                        type == "clothing_store"   || 
-                        type == "park"             || 
-                        type == "musem"            || 
-                        type == "church"           || 
-                        type == "place_of_worship" || 
-                        type == "car_rental"     );
+                return (["airport", "cafe", "food", "bar", "lodging", "store", "park", "clothing_store", "museum", "church", "place_of_worship",
+                  "bowling_alley", "casino", "night_club", "amusement_park", "restaurant", "shopping_mall", "point_of_interest"].indexOf(type) > -1)
               });
           });
+
+          _.each(filtered, function(place) {
+            if ('photos' in place && place.photos.length > 0) {
+              place.mg_photo = place.photos[0].getUrl({'maxWidth': 400, 'maxHeight': 200});  
+            }
+          });
+
+          console.log("GoogleService::getPlacesByLatLng", filtered, filtered.length);
 
           callback(filtered);
         }
@@ -111,10 +107,15 @@ app.service('GoogleService', ['$http', function($http) {
       };
 
       this.service.getDetails(request, function(details, status) {
-        console.log("got details", status);
+        console.log("got details", status, details);
         if (status == google.maps.places.PlacesServiceStatus.OK) {
           place.details = details;
-          place.map = self.getStaticMap(place.details);
+          place.map          = self.getStaticMap(place.details);
+          place.mg_type      = 'place';
+          place.mg_source    = 'google';
+          place.mg_latitude  = place.geometry.location.lat();
+          place.mg_longitude = place.geometry.location.lng();
+
         }
         callback(place);
       });

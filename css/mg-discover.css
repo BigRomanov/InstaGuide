@@ -229,11 +229,11 @@ img.insta-thumb { height: 80px; width: 80px; }
 .insta-place-action-img { cursor: pointer; height: 24px; /*width 12px*/ }
 
 img.insta-place-type {
-  height: 24px;
-  height: 30px;
+  
+  height: 14px;
+  padding:2px;
   margin-right: 5px;
   vertical-align: middle;
-  width: 24px;
 }
 
 .controls {

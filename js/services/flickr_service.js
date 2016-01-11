@@ -216,6 +216,7 @@ app.service('FlickrService', ['$http', function($http) {
       success(function(data, status, headers, config) {
         var photos = data.photos.photo;
         _.each(photos, function(photo) {
+          photo.mg_type = "photo";
           photo.mg_source = "flickr";
           photo.mg_thumb_view_url = photo.url_sq;
           photo.mg_details_view_url = photo.url_m;

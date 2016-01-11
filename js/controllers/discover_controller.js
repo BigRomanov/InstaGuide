@@ -93,7 +93,7 @@ app.controller('DiscoverController', ['$scope', '$timeout', '$window', '$locatio
         $scope.mapInterface.showLocationOnMap(lat, lng);
 
         // TEST: Load places from the new location
-        GoogleService.getPlacesByLatLng(lat, lng, distance, function(places) {
+        GoogleService.getPlacesByLatLng(lat, lng, function(places) {
           $scope.placesLoading = false;
           $scope.googlePlaces = places;
         });
@@ -162,7 +162,7 @@ app.controller('DiscoverController', ['$scope', '$timeout', '$window', '$locatio
           console.log("DiscoverController::onMapClick, loaded: " + $scope.photos.length + " photos from location", lat, lng);
         });
 
-      GoogleService.getPlacesByLatLng(lat, lng, distance, function(places) {
+      GoogleService.getPlacesByLatLng(lat, lng, function(places) {
         $scope.placesLoading = false;
         $scope.googlePlaces = places;
       });

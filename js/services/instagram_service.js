@@ -57,6 +57,7 @@ app.service('InstagramService', ['$http', function($http) {
 
               // Normalize photo data
               _.each(images, function(photo) {
+                photo.mg_type = "photo";
                 photo.mg_source = "instagram";
                 photo.mg_thumb_view_url = photo.images.thumbnail.url;
                 photo.mg_details_view_url = photo.images.standard_resolution.url;
