@@ -1,7 +1,9 @@
 <google-map on-click="onMapClick(lat,lng)" on-init="mapCallback(interface)" map-id="'map-canvas'" search="true"></google-map>
 <div class="mg-discover-pane">
   <div class="mg-discover-pane-header">
-    <div style="float:left;line-height:50px" class=".md-title">{{title}}</div>
+    <div style="float:left;margin-top:10px;">
+      <span style="font-size:14px">{{city}}</span><br/><span class="font-size:20px" >{{country}}</span>
+    </div>
     <div class="mg-discover-pane-header-actions" layout="row">      
       <md-button class="md-icon-button" aria-label="Articles" ng-click="showArticles()" ng-class="{'mg-discover-pane-active-button' : activeTab==1}">
         <md-icon md-svg-icon="img/svg/ic_articles_black_24px.svg"></md-icon>

@@ -1,6 +1,6 @@
 app.service('GoogleService', ['$http', function($http) {
 
-    var service = null;
+    this.geocoder = new google.maps.Geocoder;
 
     this.setService = function(service) {
       this.service = service;
@@ -25,6 +25,31 @@ app.service('GoogleService', ['$http', function($http) {
     this.findPlacesByName = function(name, callback) {
       var service = new google.maps.places.AutocompleteService();
       service.getQueryPredictions({ input: name }, callback);
+    }
+
+    this.getLocationByLatLng = function(lat, lng, callback) {
+      this.geocoder.geocode({'location': {lat:lat, lng:lng}}, function(results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        var result = results[0];
+        var city = "";
+        var country = "";
+
+        _.each(result.address_components, function(component) {
+          console.log(component, component.types);
+          if (component.types[0] == 'locality') {
+            city = component.long_name;
+          }
+          else if (component.types[0] == 'country') {
+            country = component.long_name;
+          }
+        });
+
+        callback(null, {country:country, city:city});
+      }
+      else {
+        callback(status, null);
+      }
+    });
     }
 
     this.getPlacesByLatLng = function(lat, lng, distance, callback) {

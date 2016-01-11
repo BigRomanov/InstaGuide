@@ -62,7 +62,9 @@ app.service('InstagramService', ['$http', function($http) {
                 photo.mg_details_view_url = photo.images.standard_resolution.url;
                 photo.mg_user_name = photo.user.username;
                 photo.mg_user_url = "https://instagram.com/"+photo.user.username;
-                photo.mg_user_img = photo.user.profile_picture
+                photo.mg_user_img = photo.user.profile_picture;
+                photo.mg_latitude = photo.location.latitude;
+                photo.mg_longitude = photo.location.longitude;
               });
 
               callback(null, images);

@@ -91,6 +91,12 @@ app.controller('DiscoverController', ['$scope', '$timeout', '$window', '$locatio
       TripService.showLocationOnMap = function(lat, lng) {
         console.log("TripService.showLocationOnMap", lat, lng);
         $scope.mapInterface.showLocationOnMap(lat, lng);
+
+        // TEST: Load places from the new location
+        GoogleService.getPlacesByLatLng(lat, lng, distance, function(places) {
+          $scope.placesLoading = false;
+          $scope.googlePlaces = places;
+        });
       }
 
       TripService.clearMarkers = function() {
@@ -122,6 +128,15 @@ app.controller('DiscoverController', ['$scope', '$timeout', '$window', '$locatio
       if (!lat || !lng) return;
 
       TripService.saveLocation(lat, lng);
+
+      // Perform reverse geo to determine where user clicked
+      GoogleService.getLocationByLatLng(lat, lng, function(err, result) {
+        if (!err) {
+          $scope.country = result.country;
+          $scope.city = result.city;  
+        }
+        
+      });
 
       // Should we have only one loading? Looks ugly
       $scope.photosLoading = true;

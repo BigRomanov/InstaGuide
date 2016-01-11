@@ -222,6 +222,8 @@ app.service('FlickrService', ['$http', function($http) {
           photo.mg_user_name = photo.username;
           photo.mg_user_url = photo.profileUrl;
           photo.mg_user_img = photo.profile_picture;
+          photo.mg_latitude = photo.latitude;
+          photo.mg_longitude = photo.longitude;
         });
         callback(null, photos);
       }).

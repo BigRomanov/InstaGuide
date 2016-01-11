@@ -94,8 +94,9 @@ app.directive('gallery', ['$timeout', 'startFromFilter', function($timeout) {
           scope.loading = true;
           scope.itemService.getItemDetails(item, function(item) {
             //TODO: Create a proper adapter for each time of item in the gallery
+            console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", item);
             scope.tripService.resetMarkers();
-            scope.tripService.showLocationOnMap(item.latitude, item.longitude);
+            scope.tripService.showLocationOnMap(item.mg_latitude, item.mg_longitude);
             scope.loading = false;
           });
         }
